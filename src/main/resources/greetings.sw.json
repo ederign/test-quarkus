@@ -5,7 +5,11 @@
   "name": "Greeting workflow",
   "description": "JSON based greeting workflow",
   "start": "ChooseOnLanguage",
-  "functions": [
+  "functions": [{
+    "name": "getInventory",
+    "operation": "https://bu98.serviceregistry.rhcloud.com/t/c9d09cb5-1a8e-4065-a1c2-d6f072bf159a/apis/registry/v2/groups/test/artifacts/pestore#getInventory",
+    "type": "rest"
+  },
     {
       "name": "greetFunction",
       "type": "custom",
@@ -53,12 +57,9 @@
         {
           "name": "greetAction",
           "functionRef": {
-            "refName": "greetFunction",
-            "arguments": {
-              "message": ".greeting+.name"
-            }
+            "refName": "getInventory",
+            "arguments": {}
           }
-        }
       ],
       "end": {
         "terminate": true
